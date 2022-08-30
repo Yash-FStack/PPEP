@@ -1,0 +1,64 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+    ViewData["Title"] = "Home";
+
+}
+<style>
+    .row-bg {
+        background-color: #272634a1;
+        color:white;
+        border-radius:15px;
+        padding:15px;
+    }
+    .card{
+        color:white;
+        background-color: #272634a1;
+    }
+</style>
+<div class="text-center mb-4">
+    <div class="py-4 main-heading">
+        PICTURE PERFECT EVENT PLANNERS
+    <div class="secondary-heading mb-3">
+        Welcomes you in a world with endless possibilities of happiness. 
+    </div>
+</div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2> Add a new section</h2>
+            </div>
+            <div class="card-body">
+
+                <form asp-controller="HelloWorld" asp-action="Index" method="post">
+                    <div class="mb-2">
+                        <label class="form-label">Section Name</label>
+                        <input name="ColName" class="form-control" type="text" />
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Section Image URL</label>
+                        <input name="imgName" class="form-control" type="text" />
+                    </div>
+                    <div class="mb-2">
+                        <button class="btn btn-primary form-control" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-bg gx-3 text-center justify-content-center mt-5">
+    @foreach (var item in Model)
+    {   
+    <div class="col-md-5 col-sm-12 m-2 index-section">
+            <div class="h3">@item.ColName</div>
+            <img class="rounded-3" height="300" width="500" src="@item.imgName" />
+    </div>
+    }
+</div>

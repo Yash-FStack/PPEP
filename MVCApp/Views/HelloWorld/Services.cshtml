@@ -1,0 +1,64 @@
+﻿@model List<MVCApp.Models.ServicesModelView>
+@{
+    ViewData["Title"] = "Services";
+}
+<script>
+    $("#services").addClass("active");
+    document.getElementById("services").addClassList("active");
+</script>
+<div class="h1 text-center mb-5">Services will be added soon.</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+<div class="card">
+    <div class="card-header">
+        <h1>Add a new service</h1>
+    </div>
+    <div class="card-body">
+        <form asp-controller="HelloWorld" asp-action="CreateService" method="post">
+            <div class="mb-2">
+                <label class="form-label">Service Name</label>
+                <input required name="Service_Name" type="text" class="form-control"/>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Service Amount</label>
+                <input required name="Service_Amount" type="number" class="form-control" />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-outline-primary">Save changes </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<div class="col-md-6">
+<table class="table table-bordered table-responsive text-center">
+    @if (Model.Count != 0){   
+<thead>
+    <tr>
+        <th>
+            Service 
+        </th>
+        <th>
+            Amount
+        </th>
+    </tr>
+</thead>
+    }
+    
+@foreach (var item in Model)
+    {  
+    <tr>
+        <td>
+                @item.Service_Name
+        </td>
+        <td>
+                @item.Service_Amount
+        </td>
+    </tr>
+    }
+
+</table>
+    </div>
+</div>
